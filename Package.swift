@@ -9,7 +9,7 @@ let package = Package(
         .library(name: "VoiceActivityDetector", targets: ["VoiceActivityDetector"])
     ],
     targets: [
-        .target(name: "VoiceActivityDetector", path: "Source", publicHeadersPath: ""),
+        .target(name: "VoiceActivityDetector", path: "VoiceActivityDetector", publicHeadersPath: ""),
     ],
     swiftLanguageVersions: [.v5]
 )
