@@ -1,0 +1,4 @@
+module libfvad {
+    umbrella "/Users/jmf/Desktop/CODE/VoiceActivityDetector/Sources/libfvad/include"
+    export *
+}

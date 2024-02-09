@@ -152,6 +152,17 @@ it, simply add the following line to your Podfile:
 pod 'VoiceActivityDetector'
 ```
 
+## Testing
+Tests pass except for `testVoiceActivityWithSampleAudio` which is a known issue.
+
+
+## Fork
+
+This repository is a fork of [VoiceActivityDetector](https://github.com/JioMeet/VoiceActivityDetector) by JioMeet and includes C files and tests.
+Original fork by JioMeet added SPM support and was forked from [reedom/VoiceActivityDetector](https://github.com/reedom/VoiceActivityDetector).
+
+
+
 ## Author
 
 reedom, tohru@reedom.com

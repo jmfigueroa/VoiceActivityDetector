@@ -1,0 +1,367 @@
+{
+  "builtTestProducts" : [
+    {
+      "binaryPath" : "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/VoiceActivityDetectorSPMPackageTests.xctest/Contents/MacOS/VoiceActivityDetectorSPMPackageTests",
+      "productName" : "VoiceActivityDetectorSPMPackageTests"
+    }
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.VoiceActivityDetector-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "importPath" : "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/jmf/Desktop/CODE/VoiceActivityDetector/Sources/VoiceActivityDetector/VoiceActivityDetector.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/libfvad.build/src/fvad.c.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/libfvad.build/src/signal_processing/division_operations.c.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/libfvad.build/src/signal_processing/energy.c.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/libfvad.build/src/signal_processing/get_scaling_square.c.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/libfvad.build/src/signal_processing/resample_48khz.c.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/libfvad.build/src/signal_processing/resample_by_2_internal.c.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/libfvad.build/src/signal_processing/resample_fractional.c.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/libfvad.build/src/signal_processing/spl_inl.c.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/libfvad.build/src/vad/vad_core.c.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/libfvad.build/src/vad/vad_filterbank.c.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/libfvad.build/src/vad/vad_gmm.c.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/libfvad.build/src/vad/vad_sp.c.o"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "VoiceActivityDetector",
+      "moduleOutputPath" : "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/VoiceActivityDetector.swiftmodule",
+      "objects" : [
+        "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/VoiceActivityDetector.build/VoiceActivityDetector.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx10.13",
+        "-swift-version",
+        "5",
+        "-v",
+        "-enable-batch-mode",
+        "-index-store-path",
+        "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-g",
+        "-j8",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-Xcc",
+        "-fmodule-map-file=/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/libfvad.build/module.modulemap",
+        "-Xcc",
+        "-I",
+        "-Xcc",
+        "/Users/jmf/Desktop/CODE/VoiceActivityDetector/Sources/libfvad/include",
+        "-module-cache-path",
+        "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/VoiceActivityDetector.build/VoiceActivityDetector-Swift.h",
+        "-color-diagnostics",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-fPIC"
+      ],
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/VoiceActivityDetector.build/VoiceActivityDetector.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/VoiceActivityDetector.swiftmodule"
+        }
+      ],
+      "sources" : [
+        "/Users/jmf/Desktop/CODE/VoiceActivityDetector/Sources/VoiceActivityDetector/VoiceActivityDetector.swift"
+      ],
+      "tempsPath" : "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/VoiceActivityDetector.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.VoiceActivityDetectorTests-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "importPath" : "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/jmf/Desktop/CODE/VoiceActivityDetector/Tests/VoiceActivityDetectorTests/VoiceActivityDetectorTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/VoiceActivityDetector.swiftmodule"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "VoiceActivityDetectorTests",
+      "moduleOutputPath" : "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/VoiceActivityDetectorTests.swiftmodule",
+      "objects" : [
+        "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/VoiceActivityDetectorTests.build/VoiceActivityDetectorTests.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx13.0",
+        "-swift-version",
+        "5",
+        "-v",
+        "-enable-batch-mode",
+        "-index-store-path",
+        "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-g",
+        "-j8",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-Xcc",
+        "-fmodule-map-file=/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/libfvad.build/module.modulemap",
+        "-Xcc",
+        "-I",
+        "-Xcc",
+        "/Users/jmf/Desktop/CODE/VoiceActivityDetector/Sources/libfvad/include",
+        "-module-cache-path",
+        "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-color-diagnostics",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-fPIC"
+      ],
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/VoiceActivityDetectorTests.build/VoiceActivityDetectorTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/VoiceActivityDetectorTests.swiftmodule"
+        }
+      ],
+      "sources" : [
+        "/Users/jmf/Desktop/CODE/VoiceActivityDetector/Tests/VoiceActivityDetectorTests/VoiceActivityDetectorTests.swift"
+      ],
+      "tempsPath" : "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/VoiceActivityDetectorTests.build",
+      "wholeModuleOptimization" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "VoiceActivityDetector" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "VoiceActivityDetector",
+      "-incremental",
+      "-c",
+      "/Users/jmf/Desktop/CODE/VoiceActivityDetector/Sources/VoiceActivityDetector/VoiceActivityDetector.swift",
+      "-I",
+      "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug",
+      "-target",
+      "arm64-apple-macosx10.13",
+      "-swift-version",
+      "5",
+      "-v",
+      "-enable-batch-mode",
+      "-index-store-path",
+      "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-g",
+      "-j8",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-Xcc",
+      "-fmodule-map-file=/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/libfvad.build/module.modulemap",
+      "-Xcc",
+      "-I",
+      "-Xcc",
+      "/Users/jmf/Desktop/CODE/VoiceActivityDetector/Sources/libfvad/include",
+      "-module-cache-path",
+      "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/VoiceActivityDetector.build/VoiceActivityDetector-Swift.h",
+      "-color-diagnostics",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-fPIC",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ],
+    "VoiceActivityDetectorTests" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "VoiceActivityDetectorTests",
+      "-incremental",
+      "-c",
+      "/Users/jmf/Desktop/CODE/VoiceActivityDetector/Tests/VoiceActivityDetectorTests/VoiceActivityDetectorTests.swift",
+      "-I",
+      "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug",
+      "-target",
+      "arm64-apple-macosx13.0",
+      "-swift-version",
+      "5",
+      "-v",
+      "-enable-batch-mode",
+      "-index-store-path",
+      "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-g",
+      "-j8",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-Xcc",
+      "-fmodule-map-file=/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/libfvad.build/module.modulemap",
+      "-Xcc",
+      "-I",
+      "-Xcc",
+      "/Users/jmf/Desktop/CODE/VoiceActivityDetector/Sources/libfvad/include",
+      "-module-cache-path",
+      "/Users/jmf/Desktop/CODE/VoiceActivityDetector/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-color-diagnostics",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-fPIC",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "libfvad" : [
+
+    ],
+    "VoiceActivityDetector" : [
+      "libfvad"
+    ],
+    "VoiceActivityDetectorTests" : [
+      "VoiceActivityDetector",
+      "libfvad"
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+
+  }
+}
