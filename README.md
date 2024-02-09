@@ -153,7 +153,28 @@ pod 'VoiceActivityDetector'
 ```
 
 ## Testing
-Tests pass except for `testVoiceActivityWithSampleAudio` which is a known issue.
+All tests passing.
+
+## To Do
+
+### VoiceActivityDetector Enhancements
+
+- [ ] **Integrate Conversion Utility Functions**: Update the `VoiceActivityDetector` to include the conversion utility functions currently showcased in the `testVoiceActivityWithSampleAudio` test. These are for ease of use and not necessary for every workflow.
+
+
+### Example Application Development
+
+- [ ] **Create SwiftUI Example Application**: Develop a new example application using SwiftUI that demonstrates how to implement the `VoiceActivityDetector` in a modern iOS/macOS app.
+
+- [ ] **Document SwiftUI Integration**: Provide detailed documentation within the example application on integrating the `VoiceActivityDetector` with SwiftUI, including setup instructions and best practices.
+
+
+### Testing and Documentation
+
+- [ ] **Update Unit Tests**: Revise existing unit tests to cover the newly integrated conversion utilities within the `VoiceActivityDetector`, ensuring that all components work seamlessly together.
+
+- [ ] **Add SwiftUI Example Tests**: Implement unit and UI tests for the SwiftUI example application to ensure reliability and demonstrate testing strategies for apps using the `VoiceActivityDetector`.
+
 
 
 ## Fork
