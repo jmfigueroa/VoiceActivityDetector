@@ -26,7 +26,7 @@ let package = Package(
             name: "VoiceActivityDetectorTests",
             dependencies: ["VoiceActivityDetector"],
             resources: [
-                .process("TestData")
+                .process("Resources/Audio")  
             ]
         ),
     ]
