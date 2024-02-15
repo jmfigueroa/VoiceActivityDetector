@@ -74,7 +74,7 @@ int fvad_set_sample_rate(Fvad* inst, int sample_rate)
     assert(inst);
     for (size_t i = 0; i < arraysize(valid_rates); i++) {
         if (valid_rates[i] * 1000 == sample_rate) {
-            inst->rate_idx = i;
+            inst->rate_idx = (int)i; 
             return 0;
         }
     }
