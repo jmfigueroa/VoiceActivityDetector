@@ -10,17 +10,17 @@ class VoiceActivityDetectorSpec: QuickSpec {
   lazy var zero = zeroData.withUnsafeBytes { $0.baseAddress!.assumingMemoryBound(to: Int16.self) }
 
   override func spec() {
-    describe("agressiveness") {
+    describe("aggressiveness") {
       it("should accept any of predefined value") {
         let detector = VoiceActivityDetector()!
-        detector.agressiveness = .veryAggressive
-        expect(detector.agressiveness) == .veryAggressive
-        detector.agressiveness = .aggressive
-        expect(detector.agressiveness) == .aggressive
-        detector.agressiveness = .lowBitRate
-        expect(detector.agressiveness) == .lowBitRate
-        detector.agressiveness = .quality
-        expect(detector.agressiveness) == .quality
+        detector.aggressiveness = .veryAggressive
+        expect(detector.aggressiveness) == .veryAggressive
+        detector.aggressiveness = .aggressive
+        expect(detector.aggressiveness) == .aggressive
+        detector.aggressiveness = .lowBitRate
+        expect(detector.aggressiveness) == .lowBitRate
+        detector.aggressiveness = .quality
+        expect(detector.aggressiveness) == .quality
       }
     }
 

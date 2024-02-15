@@ -30,7 +30,7 @@ input data in higher sample rates will just be downsampled first.
 import VoiceActivityDetector
 
 let voiceActivityDetector = VoiceActivityDetector(sampleRate: 8000,
-                                                  agressiveness: .veryAggressive)
+                                                  aggressiveness: .veryAggressive)
 
 func didReceiveSampleBuffer(_ sampleBuffer: CMSampleBuffer) {
   // activities: [VoiceActivityDetector.VoiceActivityInfo]?
@@ -49,8 +49,8 @@ And against an audio file, see [Test code](Example/Tests/Tests.swift).
 
 ```swift
 init?()
-convenience init?(sampleRate: Int = 8000, agressiveness: DetectionAgressiveness = .quality)
-convenience init?(agressiveness: DetectionAgressiveness = .quality) {
+convenience init?(sampleRate: Int = 8000, aggressiveness: Detectionaggressiveness = .quality)
+convenience init?(aggressiveness: Detectionaggressiveness = .quality) {
 ```
 
 Instanciate VoiceActivityDetector.
@@ -58,7 +58,7 @@ Instanciate VoiceActivityDetector.
 ### Properties
 
 ```swift
-var agressiveness: DetectionAgressiveness
+var aggressiveness: Detectionaggressiveness
 ```
 
 VAD operating "aggressiveness" mode.
@@ -159,7 +159,7 @@ All tests passing.
 
 ### VoiceActivityDetector Enhancements
 
-- [ ] **Integrate Conversion Utility Functions**: Update the `VoiceActivityDetector` to include the conversion utility functions currently showcased in the `testVoiceActivityWithSampleAudio` test. These are for ease of use and not necessary for every workflow.
+- [X] **Integrate Conversion Utility Functions**: Update the `VoiceActivityDetector` to include the conversion utility functions currently showcased in the `testVoiceActivityWithSampleAudio` test. These are for ease of use and not necessary for every workflow.
 
 
 ### Example Application Development
@@ -171,7 +171,7 @@ All tests passing.
 
 ### Testing and Documentation
 
-- [ ] **Update Unit Tests**: Revise existing unit tests to cover the newly integrated conversion utilities within the `VoiceActivityDetector`, ensuring that all components work seamlessly together.
+- [X] **Update Unit Tests**: Revise existing unit tests to cover the newly integrated conversion utilities within the `VoiceActivityDetector`, ensuring that all components work seamlessly together.
 
 - [ ] **Add SwiftUI Example Tests**: Implement unit and UI tests for the SwiftUI example application to ensure reliability and demonstrate testing strategies for apps using the `VoiceActivityDetector`.
 

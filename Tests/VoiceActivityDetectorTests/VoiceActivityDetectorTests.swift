@@ -19,8 +19,12 @@ final class VoiceActivityDetectorTests: XCTestCase {
         }
         
         // Test setting to a valid aggressiveness mode
-        vad.agressiveness = .veryAggressive
-        XCTAssertEqual(vad.agressiveness, .veryAggressive, "Aggressiveness should be set to .veryAggressive")
+        vad.aggressiveness = .veryAggressive
+        XCTAssertEqual(
+            vad.aggressiveness,
+            .veryAggressive,
+            "Aggressiveness should be set to .veryAggressive"
+        )
     }
     
     func testSampleRateSetting() {
@@ -31,7 +35,11 @@ final class VoiceActivityDetectorTests: XCTestCase {
         
         // Attempt to set a valid sample rate
         vad.sampleRate = 16000
-        XCTAssertEqual(vad.sampleRate, 16000, "Sample rate should be set to 16000")
+        XCTAssertEqual(
+            vad.sampleRate,
+            16000,
+            "Sample rate should be set to 16000"
+        )
     }
     
     func testListFilesInBundle() {
@@ -50,7 +58,7 @@ final class VoiceActivityDetectorTests: XCTestCase {
     ) -> VoiceActivityDetector? {
         return VoiceActivityDetector(
             sampleRate    : sampleRate,
-            agressiveness : aggressiveness
+            aggressiveness : aggressiveness
         )
     }
     
@@ -88,20 +96,6 @@ final class VoiceActivityDetectorTests: XCTestCase {
         }
     }
     
-    func convertFloatDataToInt16(floatData: UnsafePointer<Float>, frameCount: Int) -> [Int16] {
-        var scaledFloatData = [Float](repeating: 0, count: frameCount)
-        var int16Data = [Int16](repeating: 0, count: frameCount)
-        
-        // Scale float values to the range of Int16
-        var scale = Float(Int16.max)
-        vDSP_vsmul(floatData, 1, &scale, &scaledFloatData, 1, vDSP_Length(frameCount))
-        
-        // Convert scaled float data to Int16
-        vDSP_vfix16(&scaledFloatData, 1, &int16Data, 1, vDSP_Length(frameCount))
-        
-        return int16Data
-    }
-
     
     func testConvertFloatDataToInt16() {
         // Given a sample float array simulating audio data
@@ -109,35 +103,14 @@ final class VoiceActivityDetectorTests: XCTestCase {
         let frameCount = floatData.count
         
         // When converting float data to Int16
-        floatData.withUnsafeBufferPointer { bufferPointer in
-            let int16Data = convertFloatDataToInt16(floatData: bufferPointer.baseAddress!, frameCount: frameCount)
-            
-            // Then the conversion should be accurate
-            // Correcting the expected values to match the actual behavior observed
-            XCTAssertEqual(int16Data, [0, 16383, -16383, 32767, -32767], "The conversion from float data to Int16 should be accurate.")
-        }
-    }
-    
-    func chunkAudioData(
-        int16Data : [Int16],
-        frameSize : Int
-    ) -> [[Int16]] {
+        let int16Data = VoiceActivityDetector.convertFloatDataToInt16(floatData: floatData, frameCount: frameCount)
         
-        let totalFrames = int16Data.count
-        
-        var chunks: [[Int16]] = []
-        
-        for frameStart in stride(
-            from : 0,
-            to   : totalFrames,
-            by   : frameSize
-        ) {
-            let frameEnd = min(frameStart + frameSize, totalFrames)
-            let chunk    = Array(int16Data[frameStart..<frameEnd])
-            chunks.append(chunk)
-        }
-        
-        return chunks
+        // Then the conversion should be accurate
+        XCTAssertEqual(
+            int16Data,
+            [0, 16383, -16383, 32767, -32767],
+            "The conversion from float data to Int16 should be accurate."
+        )
     }
     
     func testChunkAudioData() {
@@ -146,85 +119,50 @@ final class VoiceActivityDetectorTests: XCTestCase {
         let frameSize = 80 // Chunk size
         
         // When chunking the audio data
-        let chunks = chunkAudioData(int16Data: int16Data, frameSize: frameSize)
         
-        // Then there should be 2 chunks of equal size
-        XCTAssertEqual(chunks.count, 2, "There should be exactly 2 chunks.")
-        XCTAssertEqual(chunks[0].count, 80, "Each chunk should contain 80 frames.")
-        XCTAssertEqual(chunks[1].count, 80, "Each chunk should contain 80 frames.")
+        do {
+            let chunks = try VoiceActivityDetector.chunkAudioData(int16Data: int16Data, frameSize: frameSize)
+            
+            // Then there should be 2 chunks of equal size
+            XCTAssertEqual(chunks.count,    2,  "There should be exactly 2 chunks.")
+            XCTAssertEqual(chunks[0].count, 80, "Each chunk should contain 80 frames.")
+            XCTAssertEqual(chunks[1].count, 80, "Each chunk should contain 80 frames.")
+        }
+        catch { XCTFail("Error chunking audio data: \(error)") }
     }
     
-    
-    
-    func detectVoiceActivityInChunk(
-        vad   : VoiceActivityDetector,
-        chunk : [Int16]
-    ) -> Bool {
-        return vad.detect(
-            frames : chunk,
-            count  : chunk.count
-        ) == .activeVoice
-    }
     
     func testDetectVoiceActivityInChunk() {
         // Given a mock VoiceActivityDetector configured to always detect active voice
         guard let vad = VoiceActivityDetector(
-            sampleRate    : 8000,
-            agressiveness : .veryAggressive
+            sampleRate     : 8000,
+            aggressiveness : .veryAggressive
         )
         else {
             XCTFail("Failed to initialize the VoiceActivityDetector when testing voice activity in chunk.")
             return
         }
         
-        let chunk: [Int16] = Array(repeating: 1234, count: 80) // Simulating a chunk of audio data
+        // Simulate a chunk of audio data that matches the expected frame size for 10 ms at 8000 Hz
+        let frameSize = vad.sampleRate / 100 // This should be 80 for 10 ms at 8 kHz
+        let chunk: [Int16] = Array(repeating: 1234, count: frameSize)
         
         // When detecting voice activity in the chunk
-        let activityDetected = detectVoiceActivityInChunk(vad: vad, chunk: chunk)
-        
-        // Then voice activity should be detected
-        XCTAssertTrue(activityDetected, "Voice activity should be detected in the chunk.")
-    }
-    
-    
-    func processAudioData(
-        pcmBuffer : AVAudioPCMBuffer,
-        vad       : VoiceActivityDetector
-    ) -> Bool {
-        guard let channelData = pcmBuffer.floatChannelData else {
-            XCTFail("Failed to get channel data from PCM buffer.")
-            return false
+        do {
+            let activityDetected = try VoiceActivityDetector.detectVoiceActivityInChunk(vad: vad, chunk: chunk)
+            
+            // Then voice activity should be detected
+            XCTAssertTrue(activityDetected, "Voice activity should be detected in the chunk.")
         }
-        
-        // Assuming the audio file is mono for simplicity
-        let floatData   = channelData[0]
-        let totalFrames = Int(pcmBuffer.frameLength)
-        let int16Data   = convertFloatDataToInt16(floatData : floatData, frameCount : totalFrames)
-        
-        // Calculate frame size based on sample rate and desired chunk duration
-        let msChunkSize = 10 // Milliseconds
-        let sampleRate  = 8000 // Hz, adjust as needed
-        let frameSize   = sampleRate * msChunkSize / 1000
-        
-        let chunks = chunkAudioData(int16Data: int16Data, frameSize: frameSize)
-        
-        // Process each chunk to detect voice activity
-        for chunk in chunks {
-            if detectVoiceActivityInChunk(
-                vad   : vad,
-                chunk : chunk
-            ) {
-                return true // Voice activity detected
-            }
-        }
-        
-        return false // No voice activity detected
+        catch { XCTFail("Error detecting voice activity in chunk: \(error)") }
     }
+
+    
     
     /// Test voice activity detection using a sample audio file
     func testVoiceActivityWithSampleAudio() {
         
-        guard let vad = initializeVoiceActivityDetector(
+        guard let vad = VoiceActivityDetector(
             sampleRate     : 8000,
             aggressiveness : .veryAggressive
         ) else {
@@ -232,19 +170,28 @@ final class VoiceActivityDetectorTests: XCTestCase {
             return
         }
         
-        guard let audioURL = loadAudioFile(
-            resourceName : "sample_speech_audio",
-            ofType       : "wav"
-        ) else { return }
+        guard let audioURL = Bundle.module.url(
+            forResource: "sample_speech_audio",
+            withExtension: "wav"
+        ) else {
+            XCTFail("Failed to find the audio file.")
+            return
+        }
         
-        guard let pcmBuffer = readAudioFileIntoBuffer(audioURL: audioURL) else { return }
+        guard let pcmBuffer = try? VoiceActivityDetector.readAudioFileIntoBuffer(audioURL: audioURL) else {
+            XCTFail("Failed to read the audio file into buffer.")
+            return
+        }
         
-        let voiceActivityDetected = processAudioData(
-            pcmBuffer : pcmBuffer,
-            vad       : vad
-        )
-        
-        XCTAssertTrue(voiceActivityDetected, "Expected at least some voice activity to be detected in the audio file.")
+        do {
+            let voiceActivityDetected = try VoiceActivityDetector.processAudioData(
+                pcmBuffer: pcmBuffer,
+                vad: vad
+            )
+            
+            XCTAssertTrue(voiceActivityDetected, "Expected at least some voice activity to be detected in the audio file.")
+        }
+        catch { XCTFail("Error processing audio data: \(error)") }
     }
 }
 

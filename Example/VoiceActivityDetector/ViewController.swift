@@ -13,10 +13,10 @@ import VoiceActivityDetector
 class ViewController: UIViewController {
   @IBOutlet var toggleButton: UIButton!
   @IBOutlet var stateLabel: UILabel!
-  @IBOutlet var agressivenessLabel: UILabel!
+  @IBOutlet var aggressivenessLabel: UILabel!
 
   let voiceActivityDetectDuration = 30 // ms
-  let voiceActivityDetector = VoiceActivityDetector(agressiveness: .quality)!
+  let voiceActivityDetector = VoiceActivityDetector(aggressiveness: .quality)!
   var voiceActivity: VoiceActivityDetector.VoiceActivity? {
     didSet {
       guard oldValue != voiceActivity else { return }
@@ -57,7 +57,7 @@ class ViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    agressivenessLabel.text = voiceActivityDetector.agressiveness.description
+    aggressivenessLabel.text = voiceActivityDetector.aggressiveness.description
     #if targetEnvironment(simulator)
     toggleButton.isEnabled = false
     #else
@@ -78,13 +78,13 @@ class ViewController: UIViewController {
     }
   }
 
-  @IBAction func didChangeAgressivenessValue(_ sender: UISlider) {
+  @IBAction func didChangeaggressivenessValue(_ sender: UISlider) {
     let i = Int32(round(sender.value))
     sender.value = Float(i)
 
-    let agressiveness = VoiceActivityDetector.DetectionAggressiveness.init(rawValue: i)!
-    voiceActivityDetector.agressiveness = agressiveness
-    agressivenessLabel.text = agressiveness.description
+    let aggressiveness = VoiceActivityDetector.DetectionAggressiveness.init(rawValue: i)!
+    voiceActivityDetector.aggressiveness = aggressiveness
+    aggressivenessLabel.text = aggressiveness.description
   }
 
   override func didReceiveMemoryWarning() {
