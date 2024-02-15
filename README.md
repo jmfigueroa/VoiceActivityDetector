@@ -138,6 +138,46 @@ Returns an array of VAD decision information.
   a VAD decision.
 
 
+## Optional Utilities
+
+The `VoiceActivityDetector` now includes a set of optional static utility functions that can be used independently for various tasks related to voice activity detection. These utilities make it easier to read audio files, convert audio data, chunk audio samples, and detect voice activity within those chunks and are designed to be convenient and optional for developers who may only need specific functionalities.
+
+### Audio File Reading
+
+```swift
+public static func readAudioFileIntoBuffer(audioURL: URL) throws -> AVAudioPCMBuffer
+```
+Reads an audio file and creates an `AVAudioPCMBuffer`. It throws an error if the file cannot be read or the buffer cannot be created.
+
+### Audio Data Conversion
+
+```swift
+public static func convertFloatDataToInt16(floatData: UnsafePointer<Float>, frameCount: Int) -> [Int16]
+```
+Converts floating-point audio samples to 16-bit signed integer samples, suitable for voice activity detection. Values outside the range of -1.0 to 1.0 will be clipped to avoid distortion.
+
+### Audio Data Chunking
+
+```swift
+public static func chunkAudioData(int16Data: [Int16], frameSize: Int) throws -> [[Int16]]
+```
+Divides an array of 16-bit integer audio samples into chunks of a specified frame size, throwing an error if the `frameSize` is not a positive integer.
+
+### Voice Activity Detection in Chunk
+
+```swift
+public static func detectVoiceActivityInChunk(vad: VoiceActivityDetector, chunk: [Int16]) throws -> Bool
+```
+Detects voice activity within a chunk of audio data, throwing an error if the chunk size does not match the expected frame size for the current sample rate.
+
+### Process Audio Data
+
+```swift
+public static func processAudioData(pcmBuffer: AVAudioPCMBuffer, vad: VoiceActivityDetector, msChunkSize: Int = 10, sampleRate: Int = 8000) throws -> Bool
+```
+Processes an entire `AVAudioPCMBuffer` to detect voice activity, returning a boolean indicating detection. It throws an error if the audio data cannot be processed or the chunk size does not match the expected frame size.
+
+
 
 ## Example
 
@@ -180,13 +220,14 @@ All tests passing.
 ## Fork
 
 This repository is a fork of [VoiceActivityDetector](https://github.com/JioMeet/VoiceActivityDetector) by JioMeet and includes C files and tests.
-Original fork by JioMeet added SPM support and was forked from [reedom/VoiceActivityDetector](https://github.com/reedom/VoiceActivityDetector).
+Original fork by JioMeet added SPM support and was forked from reedom's [reedom/VoiceActivityDetector](https://github.com/reedom/VoiceActivityDetector).
 
 
+## Author/Contributors
 
-## Author
-
-reedom, tohru@reedom.com
+[reedom](https://github.com/reedom)
+[JioMeet](https://github.com/JioMeet)
+[JMFigueroa](https://github.com/jmfigueroa)
 
 ## License
 
